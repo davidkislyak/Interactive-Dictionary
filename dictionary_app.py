@@ -31,7 +31,7 @@ def word_lookup(word):
         else:
             print("\nDid you mean: ")
 
-            # for each close match found:
+            # For every close match found:
             for i in range(len(close_matches)):
                 print(str(i + 1) + ".) " + str(close_matches[i]).capitalize())
             print("0.) My word is not on here")
@@ -54,15 +54,54 @@ def word_lookup(word):
     return definition_list
 
 
-# ask user for input and save to variable: user_input
+# Ask user for input and save to variable: user_input
 user_input = input("What word would you like to look up the definition for: ")
 
 # Call function word_lookup and save response to variable: definition
 definition = word_lookup(user_input)
 
-# for each different definition returned:
+# For each different definition returned:
 for i in definition:
-    print("\n" + str(i))
+
+    # If the response is less than 104 characters:
+    if len(i) <= 103:
+        print("\n" + str(i))
+
+    # Else if character count > 104
+    else:
+
+        # Create Temporary variables 
+        temp_list = []
+        character_count = 0
+        final_string = ""
+
+        # Split the current sentence into a list of words (using spaces)
+        temp_list = i.split(" ")
+
+        # For each index (word) in temp_list:
+        for x in temp_list:
+
+            # Set character_count to the length of the word
+            character_count += len(x)
+
+            # If the amount of characters on the current line is less than 103:
+            if character_count <= 103:
+                final_string += " " + str(x)
+
+            # If the amount of characters printed on the current is more than 103:
+            elif character_count >= 103:
+                #               Start new line
+                final_string += "\n" + str(x)
+                # Reset character counter because a new line has started
+                character_count = 0
+
+            else:
+                character_count += len(x)
+                final_string += " " + str(x)
+
+        # Print out the end result    Remove whitespace
+        print("\n" + str(final_string).strip())
+
 
 # Keep program from automatically closing
 input()
