@@ -63,3 +63,6 @@ definition = word_lookup(user_input)
 # for each different definition returned:
 for i in definition:
     print("\n" + str(i))
+
+# Keep program from automatically closing
+input()
