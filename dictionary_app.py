@@ -3,10 +3,10 @@
 # 3/15/2018
 # CLI dictionary application
 
-import json
+from json import load
 from difflib import SequenceMatcher, get_close_matches
 
-data = json.load(open("data.json"))  # secretly is: open("data.json", "r")
+data = load(open("data.json"))  # secretly is: open("data.json", "r")
 
 def word_lookup(word):
     #__init__
