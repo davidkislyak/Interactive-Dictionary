@@ -1,3 +1,5 @@
 .vs/
+.vscode/
 
 test_bench.py
+
